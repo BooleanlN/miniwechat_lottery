@@ -4,7 +4,7 @@
 时间仓促，所以页面较粗糙，代码较混乱，但功能逻辑已经试验过，没有问题！
 欢迎fork、star 已经指正
 ##### 小程序主页面
-![avatar](https://github.com/BooleanlN/miniwechat_lottery/blob/master/images/1.jpg)
+![avatar](https://github.com/BooleanlN/miniwechat_lottery/blob/master/images/1.jpg =100x100)
 ##### 抽奖页面
 ![avatar](https://github.com/BooleanlN/miniwechat_lottery/blob/master/images/2.jpg)
 ##### 抽奖后的弹窗
