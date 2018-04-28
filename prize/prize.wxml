@@ -1,0 +1,14 @@
+<!--pages/prize/prize.wxml-->
+<view style='background-color:orange;height:{{height}};width:100%;text-align:center;'>
+  <text style='color:white;font-size:40px;'>抽奖界面</text>
+  <view style='width:100%;'>
+  <image src='../images/ly-plate-c.gif' style='height:220px;width:220px;position:absolute;top:15%;left:23%;'></image>
+  <image src='../images/bg-lottery.png' style='height:200px;width:200px;position:absolute;top:17%;left:25%;' animation="{{an_zhuanp}}"></image>
+<image src='../images/playbtn.png' style='height:50px;width:50px;position:absolute;top:29%;left:45%;' bindtap='{{start}}'></image>
+  </view>
+  <view style='border:1px solid white;'>
+   <text style='position:absolute;top:60%;left:21%;color:white;font-size:12px;border:1px solid white;'>
+   奖品抽完为止。每个账号只有一次抽奖机会!\n抽奖后台会有记录，确保填写了有效联系方式\n一等奖2份，二等奖5份，三等奖10份\n技术支持：网络信息协会
+   </text>
+  </view>
+</view>
