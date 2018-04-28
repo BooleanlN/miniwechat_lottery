@@ -1,0 +1,52 @@
+/**app.wxss**/
+@import 'style/weui.wxss';
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    -webkit-text-size-adjust:none;
+    -webkit-user-select: none;
+    font-size: 35rpx;
+    color: #333;
+    font-family: Helvetica,Arial,"Helvetica Neue","Droid Sans","Microsoft YaHei",sans-serif;
+} 
+.top_title{
+  box-shadow:  0px 5px 5px #888888;
+  color:white;
+  font-size: 20px;
+  font-family: 'Microsoft YaHei';
+  text-align: center;
+  line-height: 40px;
+  background:#eb544b;
+  width:100%;
+  height:40px;
+}
+.menu_bottom{
+  position: absolute;
+  flex-direction: row;
+  display: inline-flex;
+  justify-content: space-around;
+  width: 100%;
+  border-top: 1px solid #4c4c4c;
+  margin-top: 20px;
+}
+.menu_bottom .bottom_nav{
+  width:30%;
+  border:0px solid;
+  height:50px;
+  text-align: center;
+  line-height: 50px;
+}
+.menu_bottom .bottom_nav image{
+  padding-top: 5px;
+  display:block;
+  width:20px;
+  height:20px;
+  margin:0 auto;
+}
+.menu_bottom .bottom_nav text{
+  font-weight: bold;
+  color: #4c4c4c;
+  font-size: 14px;
+}
