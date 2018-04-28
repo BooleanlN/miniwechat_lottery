@@ -1,0 +1,7 @@
+/* pages/test/test.wxss */
+.zhangh{
+  border:1px solid #ccc;border-radius:5px;width:80%;margin:0 auto;height:60px;margin-top:10px;
+}
+.mm{
+  border:1px solid #ccc;border-radius:5px;width:80%;margin:0 auto;margin-top:5px;height:30px;
+}

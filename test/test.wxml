@@ -1,0 +1,8 @@
+<!--pages/test/test.wxml-->
+<view style='margin-top:20px;'>
+<input placeholder='姓名（pinyin）' placeholder-style='color:#B2B2B2;' class='zhangh' bindinput="inputxm"></input>
+<input placeholder='学号' placeholder-style='color:#B2B2B2;' class='zhangh' bindinput="inputxh"></input>
+<input placeholder='联系方式' placeholder-style='color:#B2B2B2;' class='zhangh' bindinput="inputph"></input>
+</view>
+<button bindtap="go" plain='true' type='primary' style='width:200px;margin:20px auto;'>进入抽奖</button>
+
