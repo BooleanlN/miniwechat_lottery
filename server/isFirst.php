@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/html; charset=UTF-8");
-$appid = "wxcc00dae7a00a2141";
-$secret = "88db7e6c6d4b1d7e18e5cdb2c42330de";
+$appid = "xxx";
+$secret = "xxx";
 $code = $_GET['code'];
 $phe = $_GET['phone'];
 $stu = $_GET['stunum'];
@@ -15,8 +15,8 @@ curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
 curl_setopt($curl,CONNECTION_TIMEOUT,200);
 $out = curl_exec($curl);
 $openid =  json_decode($out)->openid;
-$dsn = "mysql:host=localhost;dbname=sport";
-$pdo = new PDO($dsn,"root","six666666");
+$dsn = "xxx";
+$pdo = new PDO($dsn,xxx);
 $sql2 = "SELECT * FROM prize_user WHERE open_id= ?";
 $pre2 = $pdo->prepare($sql2);
 $pre2->execute(array($openid));
