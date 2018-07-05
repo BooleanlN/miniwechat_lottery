@@ -1,1 +1,4 @@
 /* pages/prize/prize.wxss */
+.tips{
+  position:absolute;top:60%;left:19%;color:white;font-size:12px;border:1px solid white;
+}
