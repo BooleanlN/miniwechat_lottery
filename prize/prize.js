@@ -102,7 +102,7 @@ Page({
       });
       var deg = 0;
       wx.request({
-        url: 'https://www.booleanln.cn/net/getPrice.php',
+        url: host+'getPrice.php',
         data:{
           phone:xtele,
           stunum:xh,
@@ -112,11 +112,11 @@ Page({
         header: { "content-type": "application/www-form-urlencode" },
         method: 'get',
         success: function (res) {
+          console.log(res);
          deg = res.data;
-         console.log(deg);
          animation.rotate(deg).step();
         _this.setData({
-        an_zhuanp: animation.export(),
+        an_zhuanp: animation.export(),  
         start:null
       });
       if (deg == 60) {
@@ -124,15 +124,15 @@ Page({
         title: '恭喜获得一等奖一份',
         content: '恭喜获得一等奖一份',
        })
-      }else if(deg==300){
+      }else if(deg==240){
         wx.showModal({
-          title: '恭喜获得精美小礼品一份',
-          content: '恭喜获得精美小礼品一份',
+          title: '恭喜获得二等奖一份',
+          content: '恭喜获得二等奖一份',
         })
-      }else if(deg == 180){
+      } else if (deg == 180 || deg == 0){
         wx.showModal({
-          title: '恭喜获得精美笔记本一份',
-          content: '恭喜获得精美笔记本一份',
+          title: '恭喜获得三等奖一份',
+          content: '恭喜获得三等奖一份',
         })
       }else{
         wx.showModal({
@@ -142,7 +142,6 @@ Page({
       }
         }
       })
-     
     },3000);
   }
 })
