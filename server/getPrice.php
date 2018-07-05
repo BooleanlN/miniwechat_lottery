@@ -3,77 +3,80 @@ $openid= $_GET['openid'];
 $phe = $_GET['phone'];
 $stu = $_GET['stunum'];
 $name = $_GET['name'];
-$arr = [60,120,180,240,300,360,180,120,120,120,300,120,300,180,120,60,300,120,120,120,120,120];//概率
-echo count($arr);
-$count=$arr[array_rand($arr,1)];
-$dsn = "xxx";
-$pdo = new PDO($dsn,"xxx","xxx");
-        $sql = "SELECT count FROM prize WHERE prize_name= ? ";
-        $pre = $pdo->prepare($sql);
-        //一等奖
-        if($count==60)
+$arr =[0,3,13,163,2000];
+$rand = rand(0,2000);
+$count = 0;
+foreach ($arr as $item=>$value)
+{
+        if($value>$rand)
         {
-            $str = "disk";
-            $pre->execute(array($str));
-            $res = $pre->fetch(PDO::FETCH_ASSOC);
-            if(intval($res['count'])>0)
-            {
-                $renew = $res['count']-1;
-                $up = "UPDATE  prize set count = '$renew' WHERE prize_name='$str'";
-                $pdo->exec($up);
-                $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','one','$stu','$name','$phe')";
-                $pdo->exec($up2);
-                echo $count;
-            }else{
-                $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','none','$stu','$name','$phe')";
-                $pdo->exec($up2);
-                echo intval($res['count']);
-            }
+            $count = $item*60;
+            break;
         }
-        //二等奖
-        else if($count==180)
-        {
-            $str = "book";
-            $pre->execute(array($str));
-            $res = $pre->fetch(PDO::FETCH_ASSOC);
-            if(intval($res['count'])>0)
-            {
-                $renew = $res['count']-1;
-                $up = "UPDATE  prize set count = '$renew' WHERE prize_name='$str'";
-                $pdo->exec($up);
-                $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','two','$stu','$name','$phe')";
-                $pdo->exec($up2);
-                echo $count;
-            }else{
-                $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','none','$stu','$name','$phe')";
-                $pdo->exec($up2);
-                echo intval($res['count']);
-            }
-        }
-        //三等奖
-        else if($count==300)
-        {
-            $str = "small";
-            $pre->execute(array($str));
-            $res = $pre->fetch(PDO::FETCH_ASSOC);
-            if(intval($res['count'])>0)
-            {
-                $renew = $res['count']-1;
-                $up = "UPDATE  prize set count = '$renew' WHERE prize_name='$str'";
-                $pdo->exec($up);
-                $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','three','$stu','$name','$phe')";
-                $pdo->exec($up2);
-                echo $count;
-            }else{
-                $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','none','$stu','$name','$phe')";
-                $pdo->exec($up2);
-                echo intval($res['count']);
-
-            }
-        }
-        //没有中奖
-        else {
-            $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','none','$stu','$name','$phe')";
+}
+$dsn = "---";
+$pdo = new PDO($dsn,"user","pwd",array(
+    PDO::MYSQL_ATTR_INIT_COMMAND=>"set names utf8"
+    )
+);
+//判断抽奖资格
+    $sql = "SELECT count FROM prize WHERE prize_name= ? ";
+    $pre = $pdo->prepare($sql);
+    //一等奖
+    if ($count == 60) {
+        $str = "first";
+        $pre->execute(array($str));
+        $res = $pre->fetch(PDO::FETCH_ASSOC);
+        if (intval($res['count']) > 0) {
+            $renew = $res['count'] - 1;
+            $up = "UPDATE  prize set count = '$renew' WHERE prize_name='$str'";
+            $pdo->exec($up);
+            $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','一等奖','$stu','$name','$phe')";
             $pdo->exec($up2);
             echo $count;
+        } else {
+            $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','none','$stu','$name','$phe')";
+            $pdo->exec($up2);
+            echo 120;
         }
+    }//二等奖
+     else if ($count == 120) {
+        $str = "second";
+        $pre->execute(array($str));
+        $res = $pre->fetch(PDO::FETCH_ASSOC);
+        if (intval($res['count']) > 0) {
+            $renew = $res['count'] - 1;
+            $up = "UPDATE  prize set count = '$renew' WHERE prize_name='$str'";
+            $pdo->exec($up);
+            $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','二等奖','$stu','$name','$phe')";
+            $pdo->exec($up2);
+            echo 240;
+        } else {
+            $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','none','$stu','$name','$phe')";
+            $pdo->exec($up2);
+            echo 120;
+        }
+    }//三等奖 
+    else if ($count == 180) {
+        $str = "third";
+        $pre->execute(array($str));
+        $res = $pre->fetch(PDO::FETCH_ASSOC);
+        if (intval($res['count']) > 0) {
+            $renew = $res['count'] - 1;
+            $up = "UPDATE  prize set count = '$renew' WHERE prize_name='$str'";
+            $pdo->exec($up);
+            $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','三等奖','$stu','$name','$phe')";
+            $pdo->exec($up2);
+            echo $count;
+        } else {
+            $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','none','$stu','$name','$phe')";
+            $pdo->exec($up2);
+            echo 120;
+
+        }
+    }//没有中奖
+     else {
+        $up2 = "INSERT into prize_user(open_id,award,xh,xm,tele)VALUES ('$openid','none','$stu','$name','$phe')";
+        $pdo->exec($up2);
+        echo 120;
+    }
