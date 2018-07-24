@@ -88,16 +88,12 @@ Page({
   },
   go(){
     var _this = this;
-    wx.showLoading({
-      title: '检查资格ing...',
-    });
     if (_this.data.xm != "" && _this.data.xh != "" && _this.data.tele != "")
     {
       wx.login({
         success:function(res){
-          wx.hideLoading();
           wx.request({
-            url:host+'isFirst.php',
+            url: 'https://www.booleanln.cn/net/isFirst.php',
             data:{
               code:res.code,
               name: _this.data.xm,
@@ -106,7 +102,7 @@ Page({
             },
             header: { "content-type":"application/www-form-urlencode"},
             success:function(res){
-              //console.log(res);
+              console.log(res.data);
               if(res.data.code>0)
               {
                 var str = 'xm= ' + _this.data.xm + '&xh=' + _this.data.xh + '&xtele=' + _this.data.tele+'&openid='+res.data.open_id;
@@ -114,28 +110,16 @@ Page({
                   url: '../../pages/prize/prize?' + str,
                   success: function () {
                     console.log("跳转成功");
+
                   },
                   fail: function (res) {
                     console.log(res);
                   }
                 })
-              } else if (res.data.code==-1){
+              }else{
                 wx.showModal({
                   title: '抽奖次数已用完！',
                   content: '抽奖次数已用完！',
-                })
-              }else if(res.data.code==-3)
-              {
-                wx.showModal({
-                  title: '格式错误',
-                  content: '请检查学号格式是否正确',
-                })
-              }
-              else
-              {
-                wx.showModal({
-                  title: 'sorry',
-                  content: '您的缺勤次数多于3次，无法参与抽奖',
                 })
               }
             }
@@ -143,10 +127,9 @@ Page({
         }
       })
     }else{
-      wx.hideLoading();
       wx.showModal({
-        title: 'tip',
-        content: '输入姓名学号及联系方式，中奖后通知你哦~',
+        title: '输入以上信息，中奖后联系！',
+        content: '输入以上信息，中奖后联系！',
       })
     }
   }
