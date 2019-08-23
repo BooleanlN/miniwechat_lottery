@@ -14,6 +14,7 @@ class App extends Component {
     super()
     const interceptor = function(chain){
       const requestParams = chain.requestParams
+      console.log(requestParams)
       const {method, data, url} = requestParams
       console.log(`http ${method || 'GET'} --> ${url} data:`,data)
       return chain.proceed(requestParams).then(
@@ -25,10 +26,13 @@ class App extends Component {
     }
     Taro.addInterceptor(interceptor)
   }
+  componentDidMount () {}
+
   config = {
     pages: [
       'pages/login/login',
-      'pages/index/index'
+      'pages/index/index',
+      'pages/roulette/roulette'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -38,7 +42,7 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {}
+
 
   componentDidShow () {}
 

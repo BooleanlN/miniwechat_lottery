@@ -1,5 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
-import {View,Form,Input, Button} from '@tarojs/components'
+import {View} from '@tarojs/components'
+import { AtInput,AtForm,AtButton } from 'taro-ui'
+import './login.scss'
 
 class Login extends Component{
     constructor(props){
@@ -21,20 +23,45 @@ class Login extends Component{
             }
         }).then(
             res => {
-                console.log(res.data)
+                Taro.showToast({
+                    title: '注册成功',
+                    icon: 'success',
+                    duration: 2000
+                })
+                Taro.reLaunch({
+                    url: 'index?name='+ this.state.username + '&telephone=' + this.state.telephone
+                })
+            }
+        ).catch(
+            error => {
+                Taro.showToast({
+                    title:error.msg || '注册失败',
+                    icon: 'none',
+                    duration: 2000
+                })
             }
         )
     }
+    setName(val){
+        this.setState({
+            username:val
+        })
+    }
+    setTele(val){
+        this.setState({
+            telephone:val
+        })
+    }
     render(){
-        const username = this.state.username
-        const telephone = this.state.telephone
         return (
             <View className='login-container'>
-                <Form onSubmit={this.formSubmit}>
-                    <Input type='text' placeholder='请输入您的用户名' focus value={username} />
-                    <Input type='number' placeholder='请输入您的手机号' value={telephone} />
-                    <Button className='btn' type='primary'>提交</Button>
-                </Form>
+                <View className='login-box'>
+                    <AtForm>
+                        <AtInput type='text' placeholder='请输入您的用户名'  value={this.state.username}  onChange={this.setName.bind(this)} title='用户名' />
+                        <AtInput type='phone' placeholder='请输入您的联系方式' value={this.state.telephone} onChange={this.setTele.bind(this)} title='联系方式' />
+                    </AtForm>
+                    <AtButton className='btn' type='primary' onClick={this.formSubmit.bind(this)} size='normal'>提交</AtButton>
+                </View>
             </View>
         )
     }

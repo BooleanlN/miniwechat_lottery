@@ -1,0 +1,33 @@
+.roulette-container{
+    background: orange;
+    width: 100%;
+    text-align: center;
+    .title{
+        color:white;font-size:40px;
+    }
+    .content{
+        width: 100%;
+        .bg-light{
+            height:300px;width:300px;position:absolute;top:14.5%;left:50%;
+            margin-left: -150px;
+        }
+        .bg-img{
+            height:250px;width:250px;position:absolute;top:17%;left:50%;
+            margin-left: -125px;
+        }  
+        .btn{
+            height:50px;width:50px;position:absolute;top:25%;left:50%;
+            margin-left: -25px;
+        }
+    }
+    .tips{
+        text{
+            position:absolute;top:50%;left:50%;color:white;font-size:20px;border:1px solid white;
+            width: 400rpx;
+            height: 150rpx;
+            margin-left: -200rpx;
+
+        }
+    }
+    
+}

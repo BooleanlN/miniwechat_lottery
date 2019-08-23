@@ -1,0 +1,17 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    .login-box{
+        width: 80%;
+        height: 50%;
+        .btn{
+            margin-top: 10px;
+        }  
+    }
+    
+}
